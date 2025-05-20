@@ -44,11 +44,11 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <div className="h-10 flex items-center">
+              <div className="flex items-center">
                 <img 
                   src="/src/assets/images/tecastra-logo.jpeg" 
                   alt="TecAstra" 
-                  className="h-9" 
+                  className="h-20" 
                 />
               </div>
             </Link>
