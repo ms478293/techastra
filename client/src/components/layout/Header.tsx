@@ -44,9 +44,16 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <div className="h-10 w-40 font-heading font-bold text-2xl flex items-center">
-                <span className="text-[hsl(var(--tecastra-teal))]">Tec</span>
-                <span className="text-[hsl(var(--tecastra-gold))]">Astra</span>
+              <div className="h-10 flex items-center">
+                <img 
+                  src="/src/assets/images/tecastra-logo.jpeg" 
+                  alt="TecAstra" 
+                  className="h-9 mr-2" 
+                />
+                <div className="font-heading font-bold text-2xl flex items-center">
+                  <span className="text-[hsl(var(--tecastra-teal))]">Tec</span>
+                  <span className="text-[hsl(var(--tecastra-gold))]">Astra</span>
+                </div>
               </div>
             </Link>
             
