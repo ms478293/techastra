@@ -41,14 +41,14 @@ const Header = () => {
         </div>
         
         {/* Main Navigation */}
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-8">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
               <div className="flex items-center">
                 <img 
                   src="/src/assets/images/tecastra-logo.jpeg" 
                   alt="TecAstra" 
-                  className="h-20" 
+                  className="h-32" 
                 />
               </div>
             </Link>
