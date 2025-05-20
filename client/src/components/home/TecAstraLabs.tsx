@@ -92,15 +92,14 @@ const TecAstraLabs = () => {
             </div>
             
             <motion.div variants={itemVariants}>
-              <Link href="#">
-                <motion.a 
-                  className="inline-flex items-center px-6 py-3 bg-[hsl(var(--tecastra-gold))] text-[hsl(var(--tecastra-darkblue))] font-medium rounded-full hover:bg-white transition duration-150"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link href="#" className="inline-flex items-center px-6 py-3 bg-[hsl(var(--tecastra-gold))] text-[hsl(var(--tecastra-darkblue))] font-medium rounded-full hover:bg-white transition duration-150">
                   Visit TecAstra Labs <ArrowRight className="ml-2 h-4 w-4" />
-                </motion.a>
-              </Link>
+                </Link>
+              </motion.div>
             </motion.div>
           </motion.div>
           

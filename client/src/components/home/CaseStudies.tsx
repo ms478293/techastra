@@ -131,10 +131,8 @@ const CaseStudies = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <Link href="#">
-            <a className="inline-flex items-center px-6 py-3 border border-[hsl(var(--tecastra-teal))] text-[hsl(var(--tecastra-teal))] bg-white hover:bg-[hsl(var(--tecastra-teal))] hover:text-white font-medium rounded-full transition duration-150">
-              View All Case Studies <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
+          <Link href="#" className="inline-flex items-center px-6 py-3 border border-[hsl(var(--tecastra-teal))] text-[hsl(var(--tecastra-teal))] bg-white hover:bg-[hsl(var(--tecastra-teal))] hover:text-white font-medium rounded-full transition duration-150">
+            View All Case Studies <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </motion.div>
       </div>

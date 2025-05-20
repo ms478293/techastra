@@ -44,24 +44,22 @@ const HeroSection = () => {
               TecAstra delivers comprehensive cybersecurity solutions that protect your organization from advanced threats across cloud, network, and endpoints.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link href="#">
-                <motion.a 
-                  className="px-6 py-3 bg-[hsl(var(--tecastra-teal))] hover:bg-[hsl(var(--tecastra-gold))] text-white font-medium rounded-full text-center transition duration-150 inline-block"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link href="#" className="px-6 py-3 bg-[hsl(var(--tecastra-teal))] hover:bg-[hsl(var(--tecastra-gold))] text-white font-medium rounded-full text-center transition duration-150 inline-block">
                   Request Demo
-                </motion.a>
-              </Link>
-              <Link href="#">
-                <motion.a 
-                  className="px-6 py-3 bg-transparent border border-white hover:bg-white hover:text-[hsl(var(--tecastra-darkblue))] text-white font-medium rounded-full text-center transition duration-150 inline-block"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+                </Link>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link href="#" className="px-6 py-3 bg-transparent border border-white hover:bg-white hover:text-[hsl(var(--tecastra-darkblue))] text-white font-medium rounded-full text-center transition duration-150 inline-block">
                   Explore Solutions
-                </motion.a>
-              </Link>
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
           <motion.div className="relative" variants={imageVariants}>
