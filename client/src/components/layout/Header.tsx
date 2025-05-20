@@ -46,7 +46,7 @@ const Header = () => {
             <Link href="/" className="flex-shrink-0">
               <div className="h-10 flex items-center">
                 <img 
-                  src="/src/assets/images/tecastra-logo-new.jpeg" 
+                  src="/src/assets/images/tecastra-logo.jpeg" 
                   alt="TecAstra" 
                   className="h-9" 
                 />
