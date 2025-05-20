@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 188 100% 30%;         /* TecAstra Teal */
+  --primary-foreground: 211 100% 99%;
+  --secondary: 40 78% 52%;        /* TecAstra Gold */
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 188 100% 30%;            /* TecAstra Teal */
+  --radius: 0.5rem;
+  
+  /* TecAstra custom colors */
+  --tecastra-teal: 188 100% 30%;
+  --tecastra-gold: 40 78% 52%;
+  --tecastra-darkblue: 210 70% 17%;
+  --tecastra-gray: 210 33% 96%;
+  --tecastra-darkgray: 215 20% 47%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 188 100% 30%;          /* TecAstra Teal */
+  --primary-foreground: 211 100% 99%;
+  --secondary: 40 78% 52%;         /* TecAstra Gold */
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat", system-ui, sans-serif;
+  }
+}
+
+/* TecAstra custom styles */
+.mega-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  display: none;
+}
+
+.nav-item:hover .mega-menu {
+  max-height: 1000px;
+  display: block;
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: rgba(206, 212, 218, 0.2);
+  }
+  100% {
+    background-color: rgba(206, 212, 218, 0.4);
+  }
+}
+
+/* Define font families */
+@layer base {
+  :root {
+    --font-sans: "Inter", system-ui, sans-serif;
+    --font-heading: "Montserrat", system-ui, sans-serif;
+  }
+}
