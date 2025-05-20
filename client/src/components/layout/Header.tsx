@@ -17,7 +17,7 @@ const Header = () => {
   
   useEffect(() => {
     if (isMobile) {
-      setLogoSize('h-12 max-w-[150px] my-2');
+      setLogoSize('h-12 w-12 my-2');
     } else {
       setLogoSize('h-32');
     }
@@ -53,11 +53,11 @@ const Header = () => {
         <div className="flex justify-between items-center py-8">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <div className="flex items-center">
+              <div className="flex items-center justify-center">
                 <img 
                   src="/src/assets/images/tecastra-logo.jpeg" 
                   alt="TecAstra" 
-                  className={logoSize} 
+                  className={`${logoSize} object-contain`} 
                 />
               </div>
             </Link>
