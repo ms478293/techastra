@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { useMobile } from '@/hooks/use-mobile';
 import { 
@@ -13,12 +13,21 @@ import { cn } from '@/lib/utils';
 const Header = () => {
   const isMobile = useMobile();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoSize, setLogoSize] = useState('h-32');
+  
+  useEffect(() => {
+    if (isMobile) {
+      setLogoSize('h-12 max-w-[150px] my-2');
+    } else {
+      setLogoSize('h-32');
+    }
+  }, [isMobile]);
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Navigation Bar */}
-        <div className="flex justify-between items-center py-2 border-b border-gray-200">
+        {/* Top Navigation Bar - Hidden on Mobile */}
+        <div className={`${isMobile ? 'hidden' : 'flex'} justify-between items-center py-2 border-b border-gray-200`}>
           <div className="flex items-center">
             <Link href="#" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">TecAstra Labs</Link>
             <span className="mx-2 text-[hsl(var(--tecastra-darkgray))]">|</span>
@@ -48,7 +57,7 @@ const Header = () => {
                 <img 
                   src="/src/assets/images/tecastra-logo.jpeg" 
                   alt="TecAstra" 
-                  className="h-32" 
+                  className={logoSize} 
                 />
               </div>
             </Link>
