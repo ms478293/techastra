@@ -46,14 +46,10 @@ const Header = () => {
             <Link href="/" className="flex-shrink-0">
               <div className="h-10 flex items-center">
                 <img 
-                  src="/src/assets/images/tecastra-logo.jpeg" 
+                  src="/src/assets/images/tecastra-logo-new.jpeg" 
                   alt="TecAstra" 
-                  className="h-9 mr-2" 
+                  className="h-9" 
                 />
-                <div className="font-heading font-bold text-2xl flex items-center">
-                  <span className="text-[hsl(var(--tecastra-teal))]">Tec</span>
-                  <span className="text-[hsl(var(--tecastra-gold))]">Astra</span>
-                </div>
               </div>
             </Link>
             
