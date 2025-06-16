@@ -120,21 +120,21 @@ const MegaMenu = ({ type }: MegaMenuProps) => {
         <div>
           <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">By Use Case</h3>
           <ul className="space-y-2">
-            <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Zero Trust Implementation</Link></li>
-            <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Cloud Security & Compliance</Link></li>
-            <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Ransomware Prevention</Link></li>
-            <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">IoT Security</Link></li>
-            <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Remote Workforce Security</Link></li>
+            <li><Link href="/solutions#zero-trust-implementation" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Zero Trust Implementation</Link></li>
+            <li><Link href="/solutions#cloud-security-compliance" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Cloud Security & Compliance</Link></li>
+            <li><Link href="/solutions#ransomware-prevention" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Ransomware Prevention</Link></li>
+            <li><Link href="/solutions#remote-workforce-security" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Remote Workforce Security</Link></li>
+            <li><Link href="/solutions" className="text-sm hover:text-[hsl(var(--tecastra-teal))] font-medium">View All Solutions</Link></li>
           </ul>
         </div>
         <div>
           <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">By Industry</h3>
           <ul className="space-y-2">
-            <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Financial Services</Link></li>
-            <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Healthcare</Link></li>
-            <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Government</Link></li>
-            <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Retail</Link></li>
-            <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Manufacturing</Link></li>
+            <li><Link href="/solutions#financial-services" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Financial Services</Link></li>
+            <li><Link href="/solutions#healthcare" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Healthcare</Link></li>
+            <li><Link href="/solutions#government" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Government</Link></li>
+            <li><Link href="/solutions#retail" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Retail & E-commerce</Link></li>
+            <li><Link href="/solutions#manufacturing" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Manufacturing</Link></li>
           </ul>
         </div>
         <div className="col-span-2 mt-6 bg-[hsl(var(--tecastra-gray))] p-4 rounded-lg">
@@ -154,18 +154,18 @@ const MegaMenu = ({ type }: MegaMenuProps) => {
       <div>
         <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">Professional Services</h3>
         <ul className="space-y-2">
-          <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Security Assessment</Link></li>
-          <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Deployment Services</Link></li>
-          <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Managed Detection & Response</Link></li>
-          <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Incident Response</Link></li>
-          <li><Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Security Training</Link></li>
+          <li><Link href="/services#security-assessment" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Security Assessment & Consulting</Link></li>
+          <li><Link href="/services#managed-detection" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Managed Detection & Response</Link></li>
+          <li><Link href="/services#implementation" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Implementation & Integration</Link></li>
+          <li><Link href="/services#training" className="text-sm hover:text-[hsl(var(--tecastra-teal))]">Training & Education</Link></li>
+          <li><Link href="/services#support" className="text-sm hover:text-[hsl(var(--tecastra-teal))] font-medium">Support Plans</Link></li>
         </ul>
       </div>
       <div className="bg-[hsl(var(--tecastra-gray))] p-4 rounded-lg">
         <h4 className="font-heading font-medium text-[hsl(var(--tecastra-darkblue))] mb-2">TecAstra Security Operations</h4>
         <p className="text-sm text-[hsl(var(--tecastra-darkgray))] mb-3">Let our security experts manage your security operations 24/7.</p>
-        <Link href="#" className="text-sm text-[hsl(var(--tecastra-teal))] font-medium hover:underline flex items-center">
-          Learn more <ArrowRight className="ml-1 h-3 w-3" />
+        <Link href="/services" className="text-sm text-[hsl(var(--tecastra-teal))] font-medium hover:underline flex items-center">
+          View All Services <ArrowRight className="ml-1 h-3 w-3" />
         </Link>
       </div>
     </div>
