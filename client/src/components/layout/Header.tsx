@@ -9,17 +9,18 @@ import {
 import MegaMenu from './MegaMenu';
 import { Menu, Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { images } from '@/assets/images';
 
 const Header = () => {
   const isMobile = useMobile();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [logoSize, setLogoSize] = useState('h-32');
+  const [logoSize, setLogoSize] = useState('h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20');
   
   useEffect(() => {
     if (isMobile) {
-      setLogoSize('h-12 w-12 my-2');
+      setLogoSize('h-8 sm:h-10 w-auto my-2');
     } else {
-      setLogoSize('h-32');
+      setLogoSize('h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20 w-auto');
     }
   }, [isMobile]);
 
@@ -55,9 +56,10 @@ const Header = () => {
             <Link href="/" className="flex-shrink-0">
               <div className="flex items-center justify-center">
                 <img 
-                  src="/src/assets/images/tecastra-logo.jpeg" 
+                  src={images.logo} 
                   alt="TecAstra" 
-                  className={`${logoSize} object-contain`} 
+                  className={`${logoSize} object-contain bg-transparent`}
+                  style={{ filter: 'drop-shadow(0 0 0 transparent)' }}
                 />
               </div>
             </Link>
@@ -135,10 +137,12 @@ const Header = () => {
                 <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                   <div className="flex flex-col h-full">
                     <div className="flex justify-between items-center mb-8">
-                      <div className="font-heading font-bold text-2xl flex items-center">
-                        <span className="text-[hsl(var(--tecastra-teal))]">Tec</span>
-                        <span className="text-[hsl(var(--tecastra-gold))]">Astra</span>
-                      </div>
+                      <img 
+                        src="/src/assets/images/tecastra-logo-new.png" 
+                        alt="TecAstra" 
+                        className="h-8 w-auto object-contain bg-transparent"
+                        style={{ filter: 'drop-shadow(0 0 0 transparent)' }}
+                      />
                       <button onClick={() => setMobileMenuOpen(false)}>
                         <X className="h-6 w-6" />
                       </button>
