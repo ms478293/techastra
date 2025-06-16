@@ -29,15 +29,15 @@ const Header = () => {
         {/* Top Navigation Bar - Hidden on Mobile */}
         <div className={`${isMobile ? 'hidden' : 'flex'} justify-between items-center py-2 border-b border-gray-200`}>
           <div className="flex items-center">
-            <Link href="#" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">TecAstra Labs</Link>
+            <Link href="/lab" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">TecAstra Labs</Link>
             <span className="mx-2 text-[hsl(var(--tecastra-darkgray))]">|</span>
-            <Link href="#" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">Partners</Link>
+            <Link href="/partners" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">Partners</Link>
             <span className="mx-2 text-[hsl(var(--tecastra-darkgray))]">|</span>
-            <Link href="#" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">Company</Link>
+            <Link href="/company" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">Company</Link>
           </div>
           <div className="flex items-center space-x-4">
-            <Link href="#" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">Contact Sales</Link>
-            <Link href="#" className="text-sm text-[hsl(var(--tecastra-teal))] font-medium">Customer Support</Link>
+            <Link href="/contact" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">Contact Sales</Link>
+            <Link href="/support" className="text-sm text-[hsl(var(--tecastra-teal))] font-medium">Customer Support</Link>
             <div className="relative">
               <button className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))] flex items-center">
                 <span>Global</span>
@@ -97,7 +97,7 @@ const Header = () => {
                 
                 <Link href="/resources" className="text-[hsl(var(--tecastra-darkblue))] hover:text-[hsl(var(--tecastra-teal))] font-medium">Resources</Link>
                 <Link href="/lab" className="text-[hsl(var(--tecastra-darkblue))] hover:text-[hsl(var(--tecastra-teal))] font-medium">TecAstra Lab</Link>
-                <Link href="#" className="text-[hsl(var(--tecastra-darkblue))] hover:text-[hsl(var(--tecastra-teal))] font-medium">Partners</Link>
+                <Link href="/partners" className="text-[hsl(var(--tecastra-darkblue))] hover:text-[hsl(var(--tecastra-teal))] font-medium">Partners</Link>
               </nav>
             )}
           </div>
@@ -114,7 +114,7 @@ const Header = () => {
               </div>
             )}
             <Link 
-              href="#" 
+              href="/lab" 
               className="ml-4 px-4 py-2 rounded-full bg-[hsl(var(--tecastra-teal))] text-white text-sm font-medium hover:bg-[hsl(var(--tecastra-darkblue))] transition duration-150"
             >
               Get Demo
@@ -148,29 +148,29 @@ const Header = () => {
                       <nav className="flex flex-col space-y-6">
                         <div className="space-y-3">
                           <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))]">Products</h3>
-                          <Link href="#" className="block hover:text-[hsl(var(--tecastra-teal))]">Next-Gen Firewall</Link>
-                          <Link href="#" className="block hover:text-[hsl(var(--tecastra-teal))]">Cloud Security</Link>
-                          <Link href="#" className="block hover:text-[hsl(var(--tecastra-teal))]">Endpoint Protection</Link>
+                          <Link href="/products/fortiq" className="block hover:text-[hsl(var(--tecastra-teal))]">FortIQ Next-Gen Firewall</Link>
+                          <Link href="/products/nebulawall" className="block hover:text-[hsl(var(--tecastra-teal))]">NebulaWall Cloud Security</Link>
+                          <Link href="/products/sentracore" className="block hover:text-[hsl(var(--tecastra-teal))]">SentraCore Endpoint Protection</Link>
                         </div>
                         
                         <div className="space-y-3">
                           <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))]">Solutions</h3>
-                          <Link href="#" className="block hover:text-[hsl(var(--tecastra-teal))]">Zero Trust Implementation</Link>
-                          <Link href="#" className="block hover:text-[hsl(var(--tecastra-teal))]">Cloud Security & Compliance</Link>
-                          <Link href="#" className="block hover:text-[hsl(var(--tecastra-teal))]">Ransomware Prevention</Link>
+                          <Link href="/solutions/zero-trust-implementation" className="block hover:text-[hsl(var(--tecastra-teal))]">Zero Trust Implementation</Link>
+                          <Link href="/solutions/cloud-security-&-compliance" className="block hover:text-[hsl(var(--tecastra-teal))]">Cloud Security & Compliance</Link>
+                          <Link href="/solutions/ransomware-prevention" className="block hover:text-[hsl(var(--tecastra-teal))]">Ransomware Prevention</Link>
                         </div>
                         
                         <div className="space-y-3">
                           <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))]">Services</h3>
-                          <Link href="#" className="block hover:text-[hsl(var(--tecastra-teal))]">Security Assessment</Link>
-                          <Link href="#" className="block hover:text-[hsl(var(--tecastra-teal))]">Managed Detection & Response</Link>
-                          <Link href="#" className="block hover:text-[hsl(var(--tecastra-teal))]">Security Training</Link>
+                          <Link href="/services/cybersecurity-risk-assessment" className="block hover:text-[hsl(var(--tecastra-teal))]">Security Assessment</Link>
+                          <Link href="/services/managed-detection-response" className="block hover:text-[hsl(var(--tecastra-teal))]">Managed Detection & Response</Link>
+                          <Link href="/services/zero-trust-architecture-design" className="block hover:text-[hsl(var(--tecastra-teal))]">Architecture Design</Link>
                         </div>
                         
-                        <Link href="#" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">Resources</Link>
-                        <Link href="#" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">Partners</Link>
-                        <Link href="#" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">TecAstra Labs</Link>
-                        <Link href="#" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">Company</Link>
+                        <Link href="/resources" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">Resources</Link>
+                        <Link href="/partners" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">Partners</Link>
+                        <Link href="/lab" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">TecAstra Labs</Link>
+                        <Link href="/company" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">Company</Link>
                       </nav>
                     </div>
                     
@@ -184,7 +184,7 @@ const Header = () => {
                         <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
                       </div>
                       <Link 
-                        href="#" 
+                        href="/lab" 
                         className="block w-full px-4 py-2 rounded-full bg-[hsl(var(--tecastra-teal))] text-white text-sm font-medium hover:bg-[hsl(var(--tecastra-darkblue))] text-center transition duration-150"
                       >
                         Get Demo
