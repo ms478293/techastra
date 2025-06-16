@@ -231,51 +231,7 @@ const Company = () => {
         </div>
       </section>
 
-      {/* Leadership Team */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-[hsl(var(--tecastra-darkblue))] mb-6">
-              Leadership Team
-            </h2>
-            <p className="text-lg text-[hsl(var(--tecastra-darkgray))] max-w-3xl mx-auto">
-              Our leadership team brings together decades of cybersecurity expertise from leading technology companies and security organizations.
-            </p>
-          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {leadership.map((leader, index) => (
-              <motion.div
-                key={leader.name}
-                className="text-center"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <img 
-                  src={leader.image}
-                  alt={leader.name}
-                  className="w-48 h-48 rounded-full mx-auto mb-6 object-cover"
-                />
-                <h3 className="font-heading font-bold text-xl text-[hsl(var(--tecastra-darkblue))] mb-2">
-                  {leader.name}
-                </h3>
-                <p className="text-[hsl(var(--tecastra-teal))] font-medium mb-3">
-                  {leader.title}
-                </p>
-                <p className="text-[hsl(var(--tecastra-darkgray))] text-sm">
-                  {leader.bio}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Company Timeline */}
       <section className="py-20 bg-[hsl(var(--tecastra-gray))]">
