@@ -313,20 +313,20 @@ const TecAstraLab = () => {
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <Shield className="h-8 w-8 text-[hsl(var(--tecastra-teal))] mr-3" />
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between py-4 sm:h-16">
+            <div className="flex items-center mb-3 sm:mb-0">
+              <Shield className="h-6 sm:h-8 w-6 sm:w-8 text-[hsl(var(--tecastra-teal))] mr-2 sm:mr-3" />
               <div>
-                <h1 className="text-xl font-bold text-[hsl(var(--tecastra-darkblue))]">TecAstra Lab</h1>
-                <p className="text-sm text-gray-600">FortIQ Next-Gen Firewall Prototype</p>
+                <h1 className="text-lg sm:text-xl font-bold text-[hsl(var(--tecastra-darkblue))]">TecAstra Lab</h1>
+                <p className="text-xs sm:text-sm text-gray-600">FortIQ Next-Gen Firewall Prototype</p>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
-              <Badge variant="outline" className="text-green-600 border-green-200">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:space-x-4 w-full sm:w-auto">
+              <Badge variant="outline" className="text-green-600 border-green-200 text-xs">
                 <CheckCircle className="h-3 w-3 mr-1" />
                 System Healthy
               </Badge>
-              <Badge variant="outline" className="text-blue-600 border-blue-200">
+              <Badge variant="outline" className="text-blue-600 border-blue-200 text-xs">
                 Live Demo Mode
               </Badge>
             </div>
@@ -337,30 +337,36 @@ const TecAstraLab = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs value={activeView} onValueChange={setActiveView} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6">
-            <TabsTrigger value="dashboard" className="flex items-center">
-              <BarChart3 className="h-4 w-4 mr-2" />
-              Dashboard
+          <TabsList className="grid w-full grid-cols-3 sm:grid-cols-6 gap-1">
+            <TabsTrigger value="dashboard" className="flex items-center text-xs sm:text-sm p-2 sm:p-3">
+              <BarChart3 className="h-3 sm:h-4 w-3 sm:w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Dashboard</span>
+              <span className="sm:hidden">Dash</span>
             </TabsTrigger>
-            <TabsTrigger value="threats" className="flex items-center">
-              <AlertTriangle className="h-4 w-4 mr-2" />
-              Threats
+            <TabsTrigger value="threats" className="flex items-center text-xs sm:text-sm p-2 sm:p-3">
+              <AlertTriangle className="h-3 sm:h-4 w-3 sm:w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Threats</span>
+              <span className="sm:hidden">Threats</span>
             </TabsTrigger>
-            <TabsTrigger value="applications" className="flex items-center">
-              <Globe className="h-4 w-4 mr-2" />
-              Applications
+            <TabsTrigger value="applications" className="flex items-center text-xs sm:text-sm p-2 sm:p-3">
+              <Globe className="h-3 sm:h-4 w-3 sm:w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Applications</span>
+              <span className="sm:hidden">Apps</span>
             </TabsTrigger>
-            <TabsTrigger value="policies" className="flex items-center">
-              <Settings className="h-4 w-4 mr-2" />
-              Policies
+            <TabsTrigger value="policies" className="flex items-center text-xs sm:text-sm p-2 sm:p-3">
+              <Settings className="h-3 sm:h-4 w-3 sm:w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Policies</span>
+              <span className="sm:hidden">Policy</span>
             </TabsTrigger>
-            <TabsTrigger value="network" className="flex items-center">
-              <Network className="h-4 w-4 mr-2" />
-              Network
+            <TabsTrigger value="network" className="flex items-center text-xs sm:text-sm p-2 sm:p-3">
+              <Network className="h-3 sm:h-4 w-3 sm:w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Network</span>
+              <span className="sm:hidden">Net</span>
             </TabsTrigger>
-            <TabsTrigger value="analytics" className="flex items-center">
-              <Eye className="h-4 w-4 mr-2" />
-              Analytics
+            <TabsTrigger value="analytics" className="flex items-center text-xs sm:text-sm p-2 sm:p-3">
+              <Eye className="h-3 sm:h-4 w-3 sm:w-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Analytics</span>
+              <span className="sm:hidden">Data</span>
             </TabsTrigger>
           </TabsList>
 
@@ -375,14 +381,14 @@ const TecAstraLab = () => {
                 </p>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                   <div className="flex items-center space-x-2">
                     <Switch 
                       checked={firewallEnabled} 
                       onCheckedChange={setFirewallEnabled}
                       id="firewall"
                     />
-                    <Label htmlFor="firewall">Firewall Engine</Label>
+                    <Label htmlFor="firewall" className="text-sm">Firewall Engine</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Switch 
@@ -390,7 +396,7 @@ const TecAstraLab = () => {
                       onCheckedChange={setThreatDetectionEnabled}
                       id="threat-detection"
                     />
-                    <Label htmlFor="threat-detection">Threat Detection</Label>
+                    <Label htmlFor="threat-detection" className="text-sm">Threat Detection</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Switch 
@@ -398,7 +404,7 @@ const TecAstraLab = () => {
                       onCheckedChange={setAppControlEnabled}
                       id="app-control"
                     />
-                    <Label htmlFor="app-control">App Control</Label>
+                    <Label htmlFor="app-control" className="text-sm">App Control</Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Switch 
@@ -406,14 +412,15 @@ const TecAstraLab = () => {
                       onCheckedChange={setIntruspectionEnabled}
                       id="intrusion"
                     />
-                    <Label htmlFor="intrusion">IPS/IDS</Label>
+                    <Label htmlFor="intrusion" className="text-sm">IPS/IDS</Label>
                   </div>
                 </div>
-                <div className="flex gap-4 mt-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4">
                   <Button 
                     onClick={simulateAttack}
                     variant="destructive"
                     size="sm"
+                    className="w-full sm:w-auto"
                   >
                     Simulate Attack
                   </Button>
@@ -421,6 +428,7 @@ const TecAstraLab = () => {
                     onClick={clearTrafficLog}
                     variant="outline"
                     size="sm"
+                    className="w-full sm:w-auto"
                   >
                     Clear Traffic Log
                   </Button>

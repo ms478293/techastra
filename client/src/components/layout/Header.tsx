@@ -152,6 +152,7 @@ const Header = () => {
                           <Link href="/products/fortiq" className="block hover:text-[hsl(var(--tecastra-teal))]">FortIQ Next-Gen Firewall</Link>
                           <Link href="/products/nebulawall" className="block hover:text-[hsl(var(--tecastra-teal))]">NebulaWall Cloud Security</Link>
                           <Link href="/products/sentracore" className="block hover:text-[hsl(var(--tecastra-teal))]">SentraCore Endpoint Protection</Link>
+                          <Link href="/products" className="block text-sm font-medium text-[hsl(var(--tecastra-gold))] hover:text-[hsl(var(--tecastra-teal))]">View All Products →</Link>
                         </div>
                         
                         <div className="space-y-3">
@@ -159,6 +160,7 @@ const Header = () => {
                           <Link href="/solutions/zero-trust-implementation" className="block hover:text-[hsl(var(--tecastra-teal))]">Zero Trust Implementation</Link>
                           <Link href="/solutions/cloud-security-&-compliance" className="block hover:text-[hsl(var(--tecastra-teal))]">Cloud Security & Compliance</Link>
                           <Link href="/solutions/ransomware-prevention" className="block hover:text-[hsl(var(--tecastra-teal))]">Ransomware Prevention</Link>
+                          <Link href="/solutions" className="block text-sm font-medium text-[hsl(var(--tecastra-gold))] hover:text-[hsl(var(--tecastra-teal))]">View All Solutions →</Link>
                         </div>
                         
                         <div className="space-y-3">
@@ -166,6 +168,7 @@ const Header = () => {
                           <Link href="/services/cybersecurity-risk-assessment" className="block hover:text-[hsl(var(--tecastra-teal))]">Security Assessment</Link>
                           <Link href="/services/managed-detection-response" className="block hover:text-[hsl(var(--tecastra-teal))]">Managed Detection & Response</Link>
                           <Link href="/services/zero-trust-architecture-design" className="block hover:text-[hsl(var(--tecastra-teal))]">Architecture Design</Link>
+                          <Link href="/services" className="block text-sm font-medium text-[hsl(var(--tecastra-gold))] hover:text-[hsl(var(--tecastra-teal))]">View All Services →</Link>
                         </div>
                         
                         <Link href="/resources" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">Resources</Link>
