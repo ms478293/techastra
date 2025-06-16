@@ -152,7 +152,7 @@ const ProductHighlights = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <Link href="#" className="inline-flex items-center px-6 py-3 border border-[hsl(var(--tecastra-teal))] text-[hsl(var(--tecastra-teal))] bg-white hover:bg-[hsl(var(--tecastra-teal))] hover:text-white font-medium rounded-full transition duration-150">
+          <Link href="/products" className="inline-flex items-center px-6 py-3 border border-[hsl(var(--tecastra-teal))] text-[hsl(var(--tecastra-teal))] bg-white hover:bg-[hsl(var(--tecastra-teal))] hover:text-white font-medium rounded-full transition duration-150">
             View All Products <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </motion.div>
