@@ -9,6 +9,10 @@ import Products from "@/pages/Products";
 import Solutions from "@/pages/Solutions";
 import Services from "@/pages/Services";
 import Resources from "@/pages/Resources";
+import FortIQ from "@/pages/products/FortIQ";
+import ClearDNS from "@/pages/products/ClearDNS";
+import TrustLynk from "@/pages/products/TrustLynk";
+import SentraCore from "@/pages/products/SentraCore";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Chatbot from "@/components/layout/Chatbot";
@@ -18,6 +22,10 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/products" component={Products} />
+      <Route path="/products/fortiq" component={FortIQ} />
+      <Route path="/products/cleardns" component={ClearDNS} />
+      <Route path="/products/trustlynk" component={TrustLynk} />
+      <Route path="/products/sentracore" component={SentraCore} />
       <Route path="/solutions" component={Solutions} />
       <Route path="/services" component={Services} />
       <Route path="/resources" component={Resources} />

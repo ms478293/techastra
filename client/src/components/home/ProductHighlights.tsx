@@ -40,7 +40,7 @@ const ProductCard = ({ title, image, description, features, index }: ProductCard
             </li>
           ))}
         </ul>
-        <Link href="#" className="text-[hsl(var(--tecastra-teal))] font-medium hover:text-[hsl(var(--tecastra-gold))] transition duration-150 flex items-center">
+        <Link href={`/products/${title.toLowerCase()}`} className="text-[hsl(var(--tecastra-teal))] font-medium hover:text-[hsl(var(--tecastra-gold))] transition duration-150 flex items-center">
           Learn more <ArrowRight className="ml-2 h-4 w-4" />
         </Link>
       </div>
