@@ -22,81 +22,92 @@ interface MegaMenuProps {
 const MegaMenu = ({ type }: MegaMenuProps) => {
   if (type === 'products') {
     return (
-      <div className="mega-menu absolute left-0 w-screen max-w-4xl bg-white shadow-xl rounded-b-lg p-8 mt-2 grid grid-cols-3 gap-x-8 gap-y-4 border-t-2 border-[hsl(var(--tecastra-teal))] z-50">
+      <div className="mega-menu absolute left-0 w-screen max-w-5xl bg-white shadow-xl rounded-b-lg p-8 mt-2 grid grid-cols-4 gap-x-6 gap-y-4 border-t-2 border-[hsl(var(--tecastra-teal))] z-50">
         <div>
-          <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">Firewall Solutions</h3>
+          <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">Network Security</h3>
           <ul className="space-y-2">
             <li>
-              <Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
+              <Link href="/products#fortiq" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
                 <ShieldAlert className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
-                Next-Gen Firewall
+                FortIQ - Next-Gen Firewall
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
-                <Users className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
-                Cloud Identity Security
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
-                <ShieldCheck className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
-                Advanced Threat Protection
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">Cloud Security</h3>
-          <ul className="space-y-2">
-            <li>
-              <Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
-                <Cloud className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
-                Cloud Native Security
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
+              <Link href="/products#cleardns" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
                 <Network className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
-                SASE Platform
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
-                <Lock className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
-                Zero Trust Security
+                ClearDNS - DNS Security
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">Endpoint Security</h3>
+          <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">Zero Trust & Identity</h3>
           <ul className="space-y-2">
             <li>
-              <Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
-                <Laptop className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
-                Endpoint Protection
+              <Link href="/products#trustlynk" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
+                <Lock className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
+                TrustLynk - Zero Trust Access
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
-                <Bug className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
-                Vulnerability Management
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
-                <Worm className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
-                Ransomware Defense
+              <Link href="/products#identagate" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
+                <Users className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
+                IdentaGate - IAM Platform
               </Link>
             </li>
           </ul>
         </div>
-        <div className="col-span-3 mt-6 bg-[hsl(var(--tecastra-gray))] p-4 rounded-lg">
-          <h4 className="font-heading font-medium text-[hsl(var(--tecastra-darkblue))] mb-2">Discover the TecAstra Platform</h4>
-          <p className="text-sm text-[hsl(var(--tecastra-darkgray))] mb-3">Our integrated security platform provides comprehensive protection across your entire digital environment.</p>
-          <Link href="#" className="text-sm text-[hsl(var(--tecastra-teal))] font-medium hover:underline flex items-center">
-            Explore the platform <ArrowRight className="ml-1 h-3 w-3" />
+        <div>
+          <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">Endpoint & Email Security</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/products#sentracore" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
+                <Laptop className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
+                SentraCore - Endpoint EDR
+              </Link>
+            </li>
+            <li>
+              <Link href="/products#mailshield360" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
+                <ShieldCheck className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
+                MailShield 360 - Email Security
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">Cloud & Operations</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/products#nebulawall" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
+                <Cloud className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
+                NebulaWall - Cloud CNAPP
+              </Link>
+            </li>
+            <li>
+              <Link href="/products#flowops" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
+                <Puzzle className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
+                FlowOps - Security Orchestration
+              </Link>
+            </li>
+            <li>
+              <Link href="/products#pulseiq" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
+                <Bug className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
+                PulseIQ - Threat Intelligence
+              </Link>
+            </li>
+            <li>
+              <Link href="/products#unifysec" className="text-sm hover:text-[hsl(var(--tecastra-teal))] flex items-center">
+                <FileCode className="mr-2 h-4 w-4 text-[hsl(var(--tecastra-gold))]" /> 
+                UnifySec - Unified Console
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="col-span-4 mt-6 bg-[hsl(var(--tecastra-gray))] p-4 rounded-lg">
+          <h4 className="font-heading font-medium text-[hsl(var(--tecastra-darkblue))] mb-2">Discover the Complete TecAstra Security Portfolio</h4>
+          <p className="text-sm text-[hsl(var(--tecastra-darkgray))] mb-3">10 integrated cybersecurity solutions designed for modern enterprises. Superior protection with simplified management.</p>
+          <Link href="/products" className="text-sm text-[hsl(var(--tecastra-teal))] font-medium hover:underline flex items-center">
+            View All Products <ArrowRight className="ml-1 h-3 w-3" />
           </Link>
         </div>
       </div>

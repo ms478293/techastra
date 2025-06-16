@@ -40,10 +40,8 @@ const ProductCard = ({ title, image, description, features, index }: ProductCard
             </li>
           ))}
         </ul>
-        <Link href="#">
-          <a className="text-[hsl(var(--tecastra-teal))] font-medium hover:text-[hsl(var(--tecastra-gold))] transition duration-150 flex items-center">
-            Learn more <ArrowRight className="ml-2 h-4 w-4" />
-          </a>
+        <Link href="#" className="text-[hsl(var(--tecastra-teal))] font-medium hover:text-[hsl(var(--tecastra-gold))] transition duration-150 flex items-center">
+          Learn more <ArrowRight className="ml-2 h-4 w-4" />
         </Link>
       </div>
     </motion.div>
@@ -53,33 +51,69 @@ const ProductCard = ({ title, image, description, features, index }: ProductCard
 const ProductHighlights = () => {
   const products = [
     {
-      title: "Next-Gen Firewall",
+      title: "FortIQ",
       image: images.networkSecurity[0],
-      description: "Advanced threat prevention and network security with industry-leading performance and intelligence.",
+      description: "Next-generation firewall with cloud-native architecture, instant deployment, and intuitive policy builder for comprehensive network protection.",
       features: [
-        "Deep packet inspection",
-        "Intrusion prevention",
-        "Application control"
+        "Cloud-native instant deployment",
+        "Intuitive policy builder interface", 
+        "Real-time threat intelligence",
+        "Automated response capabilities"
       ]
     },
     {
-      title: "Cloud Security",
+      title: "ClearDNS",
       image: images.dataCenter[0],
-      description: "Secure your cloud infrastructure with comprehensive visibility and continuous compliance monitoring.",
+      description: "AI-powered DNS security solution with advanced threat scoring and phishing-aware filtering to protect against malicious domains.",
       features: [
-        "Cloud workload protection",
-        "Automated compliance checks",
-        "Container security"
+        "AI threat scoring engine",
+        "Phishing-aware DNS filtering",
+        "Real-time domain reputation",
+        "Advanced malware protection"
       ]
     },
     {
-      title: "Endpoint Security",
+      title: "TrustLynk",
       image: images.cybersecurityProfessionals[2],
-      description: "Protect your endpoints with AI-powered threat detection and automated response capabilities.",
+      description: "Zero Trust Network Access platform with temporary access links, contextual scoring, and seamless user experience for secure remote connectivity.",
       features: [
-        "Advanced malware prevention",
-        "Behavioral monitoring",
-        "Device control & encryption"
+        "Temporary access links",
+        "Contextual risk scoring",
+        "Smoother user experience",
+        "Identity-based access control"
+      ]
+    },
+    {
+      title: "SentraCore",
+      image: images.networkSecurity[1],
+      description: "Lightweight endpoint detection and response solution with explainable AI detection, optimized for small and medium businesses.",
+      features: [
+        "Lightweight agent deployment",
+        "Explainable AI detection",
+        "SMB-ready configuration",
+        "Real-time threat response"
+      ]
+    },
+    {
+      title: "MailShield 360",
+      image: images.dataCenter[1],
+      description: "Comprehensive email security platform with brand spoofing audit and integrated phishing training to protect against advanced email threats.",
+      features: [
+        "Brand spoofing audit",
+        "Built-in phishing training",
+        "Advanced threat detection",
+        "Email flow protection"
+      ]
+    },
+    {
+      title: "NebulaWall",
+      image: images.cybersecurityProfessionals[0],
+      description: "Cloud-native application protection platform with developer-first tools, GitHub integration, and simplified dashboards for modern DevSecOps.",
+      features: [
+        "Developer-first design",
+        "GitHub-native integration",
+        "Simplified dashboards",
+        "Container security"
       ]
     }
   ];
@@ -99,7 +133,7 @@ const ProductHighlights = () => {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
             <ProductCard
               key={index}
