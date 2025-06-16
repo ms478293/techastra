@@ -32,8 +32,6 @@ const Header = () => {
           <div className="flex items-center">
             <Link href="/lab" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">TecAstra Labs</Link>
             <span className="mx-2 text-[hsl(var(--tecastra-darkgray))]">|</span>
-            <Link href="/partners" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">Partners</Link>
-            <span className="mx-2 text-[hsl(var(--tecastra-darkgray))]">|</span>
             <Link href="/company" className="text-sm text-[hsl(var(--tecastra-darkgray))] hover:text-[hsl(var(--tecastra-teal))]">Company</Link>
           </div>
           <div className="flex items-center space-x-4">
@@ -99,7 +97,6 @@ const Header = () => {
                 
                 <Link href="/resources" className="text-[hsl(var(--tecastra-darkblue))] hover:text-[hsl(var(--tecastra-teal))] font-medium">Resources</Link>
                 <Link href="/lab" className="text-[hsl(var(--tecastra-darkblue))] hover:text-[hsl(var(--tecastra-teal))] font-medium">TecAstra Lab</Link>
-                <Link href="/partners" className="text-[hsl(var(--tecastra-darkblue))] hover:text-[hsl(var(--tecastra-teal))] font-medium">Partners</Link>
               </nav>
             )}
           </div>
@@ -138,7 +135,7 @@ const Header = () => {
                   <div className="flex flex-col h-full">
                     <div className="flex justify-between items-center mb-8">
                       <img 
-                        src="/src/assets/images/tecastra-logo-new.png" 
+                        src={images.logo} 
                         alt="TecAstra" 
                         className="h-8 w-auto object-contain bg-transparent"
                         style={{ filter: 'drop-shadow(0 0 0 transparent)' }}
@@ -172,7 +169,6 @@ const Header = () => {
                         </div>
                         
                         <Link href="/resources" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">Resources</Link>
-                        <Link href="/partners" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">Partners</Link>
                         <Link href="/lab" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">TecAstra Labs</Link>
                         <Link href="/company" className="font-medium hover:text-[hsl(var(--tecastra-teal))]">Company</Link>
                       </nav>

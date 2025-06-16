@@ -175,6 +175,7 @@ const TecAstraLab = () => {
   };
 
   const simulateAttack = () => {
+    console.log('Simulating attack...');
     const attackTypes = [
       { source: '185.220.100.240', destination: '192.168.1.100', port: '22', protocol: 'SSH', type: 'Brute Force' },
       { source: '91.229.23.45', destination: '192.168.1.101', port: '3389', protocol: 'RDP', type: 'Remote Access' },
@@ -200,6 +201,13 @@ const TecAstraLab = () => {
         blockedThreats: prev.blockedThreats + 1
       }));
     }
+    
+    console.log('Attack simulated:', attackEntry);
+  };
+
+  const clearTrafficLog = () => {
+    console.log('Clearing traffic log...');
+    setTrafficLog([]);
   };
 
   // Simulate real-time data updates and traffic generation
@@ -410,7 +418,7 @@ const TecAstraLab = () => {
                     Simulate Attack
                   </Button>
                   <Button 
-                    onClick={() => setTrafficLog([])}
+                    onClick={clearTrafficLog}
                     variant="outline"
                     size="sm"
                   >
