@@ -19,19 +19,207 @@ const TecAstraLab = () => {
     policyViolations: 23
   });
 
-  // Simulate real-time data updates
+  // Interactive firewall controls
+  const [firewallEnabled, setFirewallEnabled] = useState(true);
+  const [threatDetectionEnabled, setThreatDetectionEnabled] = useState(true);
+  const [appControlEnabled, setAppControlEnabled] = useState(true);
+  const [intruspectionEnabled, setIntruspectionEnabled] = useState(true);
+  
+  // Policy management
+  const [newRule, setNewRule] = useState({
+    name: '',
+    source: '',
+    destination: '',
+    port: '',
+    action: 'allow',
+    protocol: 'tcp'
+  });
+  
+  // Live traffic simulation
+  const [trafficLog, setTrafficLog] = useState([
+    { time: new Date().toLocaleTimeString(), source: '192.168.1.100', destination: '8.8.8.8', port: '443', action: 'ALLOWED', protocol: 'HTTPS' },
+    { time: new Date().toLocaleTimeString(), source: '192.168.1.101', destination: '1.1.1.1', port: '53', action: 'ALLOWED', protocol: 'DNS' },
+    { time: new Date().toLocaleTimeString(), source: '192.168.1.102', destination: 'malicious-site.com', port: '80', action: 'BLOCKED', protocol: 'HTTP' },
+    { time: new Date().toLocaleTimeString(), source: '192.168.1.103', destination: '10.0.0.50', port: '22', action: 'ALLOWED', protocol: 'SSH' }
+  ]);
+  
+  // Application controls
+  const [applicationControls, setApplicationControls] = useState({
+    'Microsoft Teams': { enabled: true, bandwidth: '2.4 GB', users: 156 },
+    'Dropbox': { enabled: true, bandwidth: '1.8 GB', users: 89 },
+    'Zoom': { enabled: true, bandwidth: '3.2 GB', users: 234 },
+    'YouTube': { enabled: false, bandwidth: '4.1 GB', users: 67 },
+    'Facebook': { enabled: false, bandwidth: '892 MB', users: 23 },
+    'Slack': { enabled: true, bandwidth: '1.2 GB', users: 178 }
+  });
+
+  // Network blocking simulation
+  const [blockedIPs, setBlockedIPs] = useState([
+    '192.168.100.50',
+    '10.0.0.99',
+    '172.16.0.200'
+  ]);
+  
+  const [newBlockIP, setNewBlockIP] = useState('');
+
+  // Real-time traffic generation
+  const generateTrafficEntry = () => {
+    const sources = ['192.168.1.100', '192.168.1.101', '192.168.1.102', '192.168.1.103', '192.168.1.104'];
+    const destinations = ['8.8.8.8', '1.1.1.1', 'google.com', 'microsoft.com', 'malicious-site.com', 'suspicious-domain.net'];
+    const ports = ['80', '443', '53', '22', '3389', '21'];
+    const protocols = ['HTTP', 'HTTPS', 'DNS', 'SSH', 'RDP', 'FTP'];
+    const actions = firewallEnabled ? ['ALLOWED', 'BLOCKED'] : ['ALLOWED'];
+    
+    const source = sources[Math.floor(Math.random() * sources.length)];
+    const destination = destinations[Math.floor(Math.random() * destinations.length)];
+    const port = ports[Math.floor(Math.random() * ports.length)];
+    const protocol = protocols[Math.floor(Math.random() * protocols.length)];
+    
+    let action = 'ALLOWED';
+    if (firewallEnabled && (destination.includes('malicious') || destination.includes('suspicious'))) {
+      action = 'BLOCKED';
+    }
+    if (!firewallEnabled) {
+      action = 'ALLOWED';
+    }
+    
+    return {
+      time: new Date().toLocaleTimeString(),
+      source,
+      destination,
+      port,
+      action,
+      protocol
+    };
+  };
+
+  // Interactive functions
+  const toggleApplication = (appName: keyof typeof applicationControls) => {
+    setApplicationControls(prev => ({
+      ...prev,
+      [appName]: {
+        ...prev[appName],
+        enabled: !prev[appName].enabled
+      }
+    }));
+    
+    // Add application control action to traffic log
+    const action = applicationControls[appName].enabled ? 'BLOCKED' : 'ALLOWED';
+    const controlEntry = {
+      time: new Date().toLocaleTimeString(),
+      source: 'Application Control',
+      destination: appName,
+      port: 'app',
+      action: action,
+      protocol: 'APP_CONTROL'
+    };
+    setTrafficLog(prev => [controlEntry, ...prev.slice(0, 19)]);
+  };
+
+  const blockIP = () => {
+    if (newBlockIP && !blockedIPs.includes(newBlockIP)) {
+      setBlockedIPs(prev => [...prev, newBlockIP]);
+      setNewBlockIP('');
+      
+      // Add blocking action to traffic log
+      const blockEntry = {
+        time: new Date().toLocaleTimeString(),
+        source: newBlockIP,
+        destination: 'any',
+        port: 'all',
+        action: 'BLOCKED',
+        protocol: 'ALL'
+      };
+      setTrafficLog(prev => [blockEntry, ...prev.slice(0, 19)]);
+    }
+  };
+
+  const unblockIP = (ip: string) => {
+    setBlockedIPs(prev => prev.filter(blockedIP => blockedIP !== ip));
+    
+    // Add unblocking action to traffic log
+    const unblockEntry = {
+      time: new Date().toLocaleTimeString(),
+      source: ip,
+      destination: 'any',
+      port: 'all',
+      action: 'UNBLOCKED',
+      protocol: 'ALL'
+    };
+    setTrafficLog(prev => [unblockEntry, ...prev.slice(0, 19)]);
+  };
+
+  const addFirewallRule = () => {
+    if (newRule.name && newRule.source && newRule.destination) {
+      // Add rule application to traffic log
+      const ruleEntry = {
+        time: new Date().toLocaleTimeString(),
+        source: newRule.source,
+        destination: newRule.destination,
+        port: newRule.port || 'any',
+        action: newRule.action.toUpperCase(),
+        protocol: newRule.protocol.toUpperCase()
+      };
+      setTrafficLog(prev => [ruleEntry, ...prev.slice(0, 19)]);
+      
+      // Reset form
+      setNewRule({
+        name: '',
+        source: '',
+        destination: '',
+        port: '',
+        action: 'allow',
+        protocol: 'tcp'
+      });
+    }
+  };
+
+  const simulateAttack = () => {
+    const attackTypes = [
+      { source: '185.220.100.240', destination: '192.168.1.100', port: '22', protocol: 'SSH', type: 'Brute Force' },
+      { source: '91.229.23.45', destination: '192.168.1.101', port: '3389', protocol: 'RDP', type: 'Remote Access' },
+      { source: '142.93.130.78', destination: '192.168.1.102', port: '80', protocol: 'HTTP', type: 'SQL Injection' },
+      { source: '198.51.100.10', destination: '192.168.1.103', port: '443', protocol: 'HTTPS', type: 'XSS Attack' }
+    ];
+    
+    const attack = attackTypes[Math.floor(Math.random() * attackTypes.length)];
+    const attackEntry = {
+      time: new Date().toLocaleTimeString(),
+      source: attack.source,
+      destination: attack.destination,
+      port: attack.port,
+      action: threatDetectionEnabled ? 'BLOCKED' : 'ALLOWED',
+      protocol: `${attack.protocol} (${attack.type})`
+    };
+    
+    setTrafficLog(prev => [attackEntry, ...prev.slice(0, 19)]);
+    
+    if (threatDetectionEnabled) {
+      setRealTimeStats(prev => ({
+        ...prev,
+        blockedThreats: prev.blockedThreats + 1
+      }));
+    }
+  };
+
+  // Simulate real-time data updates and traffic generation
   useEffect(() => {
     const interval = setInterval(() => {
+      // Update stats
       setRealTimeStats(prev => ({
         totalTraffic: prev.totalTraffic + Math.floor(Math.random() * 100),
-        blockedThreats: prev.blockedThreats + Math.floor(Math.random() * 3),
+        blockedThreats: firewallEnabled ? prev.blockedThreats + Math.floor(Math.random() * 2) : prev.blockedThreats,
         activeConnections: prev.activeConnections + Math.floor(Math.random() * 20) - 10,
-        policyViolations: prev.policyViolations + Math.floor(Math.random() * 2)
+        policyViolations: prev.policyViolations + Math.floor(Math.random() * 1)
       }));
-    }, 2000);
+      
+      // Generate new traffic entry
+      const newEntry = generateTrafficEntry();
+      setTrafficLog(prev => [newEntry, ...prev.slice(0, 19)]);
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [firewallEnabled, threatDetectionEnabled]);
 
   const threatData = [
     { type: 'Malware', count: 423, severity: 'critical', trend: '+12%' },
@@ -170,6 +358,68 @@ const TecAstraLab = () => {
 
           {/* Dashboard View */}
           <TabsContent value="dashboard" className="space-y-6">
+            {/* Interactive Controls */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Live Firewall Controls</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Toggle features on/off to see real-time impact on security metrics
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                  <div className="flex items-center space-x-2">
+                    <Switch 
+                      checked={firewallEnabled} 
+                      onCheckedChange={setFirewallEnabled}
+                      id="firewall"
+                    />
+                    <Label htmlFor="firewall">Firewall Engine</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Switch 
+                      checked={threatDetectionEnabled} 
+                      onCheckedChange={setThreatDetectionEnabled}
+                      id="threat-detection"
+                    />
+                    <Label htmlFor="threat-detection">Threat Detection</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Switch 
+                      checked={appControlEnabled} 
+                      onCheckedChange={setAppControlEnabled}
+                      id="app-control"
+                    />
+                    <Label htmlFor="app-control">App Control</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Switch 
+                      checked={intruspectionEnabled} 
+                      onCheckedChange={setIntruspectionEnabled}
+                      id="intrusion"
+                    />
+                    <Label htmlFor="intrusion">IPS/IDS</Label>
+                  </div>
+                </div>
+                <div className="flex gap-4 mt-4">
+                  <Button 
+                    onClick={simulateAttack}
+                    variant="destructive"
+                    size="sm"
+                  >
+                    Simulate Attack
+                  </Button>
+                  <Button 
+                    onClick={() => setTrafficLog([])}
+                    variant="outline"
+                    size="sm"
+                  >
+                    Clear Traffic Log
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -374,16 +624,16 @@ const TecAstraLab = () => {
           <TabsContent value="applications" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Application Traffic Control</CardTitle>
+                <CardTitle>Interactive Application Control</CardTitle>
                 <p className="text-sm text-muted-foreground">
-                  Monitor and control application usage across your network
+                  Click the switches to allow/block applications and see immediate effects in traffic logs
                 </p>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {applicationTraffic.map((app, index) => (
+                  {Object.entries(applicationControls).map(([appName, appData], index) => (
                     <motion.div
-                      key={app.app}
+                      key={appName}
                       className="flex items-center justify-between p-4 bg-gray-50 rounded-lg"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -392,19 +642,46 @@ const TecAstraLab = () => {
                       <div className="flex items-center space-x-4">
                         <Globe className="h-5 w-5 text-blue-500" />
                         <div>
-                          <h3 className="font-medium">{app.app}</h3>
+                          <h3 className="font-medium">{appName}</h3>
                           <p className="text-sm text-muted-foreground">
-                            {app.users} active users
+                            {appData.users} active users • {appData.bandwidth}
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-3">
-                        <span className="text-sm font-medium">{app.traffic}</span>
-                        <Badge className={getStatusColor(app.status)}>
-                          {app.status.toUpperCase()}
+                      <div className="flex items-center space-x-4">
+                        <Badge className={appData.enabled ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'}>
+                          {appData.enabled ? 'ALLOWED' : 'BLOCKED'}
                         </Badge>
+                        <Switch
+                          checked={appData.enabled}
+                          onCheckedChange={() => toggleApplication(appName as keyof typeof applicationControls)}
+                          id={`app-${appName}`}
+                        />
                       </div>
                     </motion.div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Live Traffic Log */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Live Application Traffic</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Real-time traffic showing the impact of your application controls
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="max-h-64 overflow-y-auto space-y-2">
+                  {trafficLog.filter(entry => entry.protocol === 'APP_CONTROL').map((entry, index) => (
+                    <div key={index} className="flex items-center justify-between p-2 border rounded text-sm">
+                      <span className="text-muted-foreground">{entry.time}</span>
+                      <span className="font-mono">{entry.destination}</span>
+                      <Badge className={entry.action === 'ALLOWED' ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'}>
+                        {entry.action}
+                      </Badge>
+                    </div>
                   ))}
                 </div>
               </CardContent>
@@ -413,17 +690,139 @@ const TecAstraLab = () => {
 
           {/* Policies View */}
           <TabsContent value="policies" className="space-y-6">
-            <div className="flex justify-between items-center">
-              <div>
-                <h2 className="text-2xl font-bold text-[hsl(var(--tecastra-darkblue))]">Security Policies</h2>
-                <p className="text-muted-foreground">Manage firewall rules and access controls</p>
-              </div>
-              <Button className="bg-[hsl(var(--tecastra-teal))] hover:bg-[hsl(var(--tecastra-teal))]/90">
-                <Settings className="h-4 w-4 mr-2" />
-                Create Policy
-              </Button>
-            </div>
+            {/* Create New Firewall Rule */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Create Custom Firewall Rule</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Define traffic rules and see them applied instantly to network traffic
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div>
+                    <Label htmlFor="rule-name">Rule Name</Label>
+                    <Input
+                      id="rule-name"
+                      placeholder="Block Social Media"
+                      value={newRule.name}
+                      onChange={(e) => setNewRule(prev => ({ ...prev, name: e.target.value }))}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="source-ip">Source IP/Range</Label>
+                    <Input
+                      id="source-ip"
+                      placeholder="192.168.1.0/24"
+                      value={newRule.source}
+                      onChange={(e) => setNewRule(prev => ({ ...prev, source: e.target.value }))}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="dest-ip">Destination IP/Domain</Label>
+                    <Input
+                      id="dest-ip"
+                      placeholder="facebook.com"
+                      value={newRule.destination}
+                      onChange={(e) => setNewRule(prev => ({ ...prev, destination: e.target.value }))}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="port">Port</Label>
+                    <Input
+                      id="port"
+                      placeholder="80,443"
+                      value={newRule.port}
+                      onChange={(e) => setNewRule(prev => ({ ...prev, port: e.target.value }))}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="protocol">Protocol</Label>
+                    <select
+                      id="protocol"
+                      className="w-full p-2 border rounded"
+                      value={newRule.protocol}
+                      onChange={(e) => setNewRule(prev => ({ ...prev, protocol: e.target.value }))}
+                    >
+                      <option value="tcp">TCP</option>
+                      <option value="udp">UDP</option>
+                      <option value="any">ANY</option>
+                    </select>
+                  </div>
+                  <div>
+                    <Label htmlFor="action">Action</Label>
+                    <select
+                      id="action"
+                      className="w-full p-2 border rounded"
+                      value={newRule.action}
+                      onChange={(e) => setNewRule(prev => ({ ...prev, action: e.target.value }))}
+                    >
+                      <option value="allow">ALLOW</option>
+                      <option value="block">BLOCK</option>
+                      <option value="monitor">MONITOR</option>
+                    </select>
+                  </div>
+                </div>
+                <Button 
+                  onClick={addFirewallRule}
+                  className="mt-4 bg-[hsl(var(--tecastra-teal))] hover:bg-[hsl(var(--tecastra-teal))]/90"
+                  disabled={!newRule.name || !newRule.source || !newRule.destination}
+                >
+                  Apply Rule
+                </Button>
+              </CardContent>
+            </Card>
 
+            {/* IP Blocking Interface */}
+            <Card>
+              <CardHeader>
+                <CardTitle>IP Address Blocking</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Block or unblock specific IP addresses with immediate effect
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="flex gap-4 mb-4">
+                  <Input
+                    placeholder="Enter IP address (e.g., 192.168.1.100)"
+                    value={newBlockIP}
+                    onChange={(e) => setNewBlockIP(e.target.value)}
+                    className="flex-1"
+                  />
+                  <Button 
+                    onClick={blockIP}
+                    variant="destructive"
+                    disabled={!newBlockIP}
+                  >
+                    Block IP
+                  </Button>
+                </div>
+                
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Currently Blocked IPs</h4>
+                  {blockedIPs.length === 0 ? (
+                    <p className="text-muted-foreground text-sm">No IPs currently blocked</p>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {blockedIPs.map((ip, index) => (
+                        <div key={index} className="flex items-center justify-between p-2 bg-red-50 rounded">
+                          <span className="font-mono text-sm">{ip}</span>
+                          <Button
+                            onClick={() => unblockIP(ip)}
+                            size="sm"
+                            variant="outline"
+                          >
+                            Unblock
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Policy Status */}
             <div className="grid gap-4">
               {securityPolicies.map((policy, index) => (
                 <motion.div
@@ -503,6 +902,51 @@ const TecAstraLab = () => {
 
           {/* Analytics View */}
           <TabsContent value="analytics" className="space-y-6">
+            {/* Live Traffic Monitor */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Live Network Traffic Monitor</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Real-time traffic analysis showing immediate effects of your firewall configuration changes
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="max-h-96 overflow-y-auto">
+                  <div className="space-y-2">
+                    {trafficLog.map((entry, index) => (
+                      <motion.div
+                        key={index}
+                        className={`flex items-center justify-between p-3 rounded border ${
+                          entry.action === 'BLOCKED' ? 'bg-red-50 border-red-200' : 
+                          entry.action === 'ALLOWED' ? 'bg-green-50 border-green-200' :
+                          'bg-blue-50 border-blue-200'
+                        }`}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                      >
+                        <div className="flex items-center space-x-4 text-sm">
+                          <span className="text-muted-foreground font-mono">{entry.time}</span>
+                          <span className="font-mono">{entry.source}</span>
+                          <span className="text-muted-foreground">→</span>
+                          <span className="font-mono">{entry.destination}</span>
+                          <span className="text-muted-foreground">:{entry.port}</span>
+                          <span className="px-2 py-1 bg-white rounded text-xs">{entry.protocol}</span>
+                        </div>
+                        <Badge className={
+                          entry.action === 'BLOCKED' ? 'bg-red-100 text-red-700' :
+                          entry.action === 'ALLOWED' ? 'bg-green-100 text-green-700' :
+                          'bg-blue-100 text-blue-700'
+                        }>
+                          {entry.action}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
@@ -513,17 +957,21 @@ const TecAstraLab = () => {
                     <div>
                       <div className="flex justify-between mb-2">
                         <span className="text-sm font-medium">CPU Usage</span>
-                        <span className="text-sm text-muted-foreground">23%</span>
+                        <span className="text-sm text-muted-foreground">
+                          {firewallEnabled ? '45%' : '23%'}
+                        </span>
                       </div>
-                      <Progress value={23} className="h-2" />
+                      <Progress value={firewallEnabled ? 45 : 23} className="h-2" />
                     </div>
                     
                     <div>
                       <div className="flex justify-between mb-2">
                         <span className="text-sm font-medium">Memory Usage</span>
-                        <span className="text-sm text-muted-foreground">67%</span>
+                        <span className="text-sm text-muted-foreground">
+                          {threatDetectionEnabled ? '78%' : '52%'}
+                        </span>
                       </div>
-                      <Progress value={67} className="h-2" />
+                      <Progress value={threatDetectionEnabled ? 78 : 52} className="h-2" />
                     </div>
                     
                     <div>
@@ -539,29 +987,31 @@ const TecAstraLab = () => {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Recent Activity</CardTitle>
+                  <CardTitle>Configuration Impact</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                      <span className="text-sm">Blocked suspicious IP: 192.168.1.100</span>
-                      <span className="text-xs text-muted-foreground">2m ago</span>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Firewall Engine</span>
+                      <Badge className={firewallEnabled ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'}>
+                        {firewallEnabled ? 'ACTIVE' : 'DISABLED'}
+                      </Badge>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <span className="text-sm">Policy update applied successfully</span>
-                      <span className="text-xs text-muted-foreground">5m ago</span>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Threat Detection</span>
+                      <Badge className={threatDetectionEnabled ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'}>
+                        {threatDetectionEnabled ? 'ACTIVE' : 'DISABLED'}
+                      </Badge>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                      <span className="text-sm">High bandwidth usage detected</span>
-                      <span className="text-xs text-muted-foreground">8m ago</span>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Application Control</span>
+                      <Badge className={appControlEnabled ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'}>
+                        {appControlEnabled ? 'ACTIVE' : 'DISABLED'}
+                      </Badge>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      <span className="text-sm">New application identified: Teams</span>
-                      <span className="text-xs text-muted-foreground">12m ago</span>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm">Blocked IPs</span>
+                      <Badge variant="outline">{blockedIPs.length} IPs</Badge>
                     </div>
                   </div>
                 </CardContent>
