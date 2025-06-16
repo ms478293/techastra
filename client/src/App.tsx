@@ -22,6 +22,7 @@ import NebulaWall from "@/pages/products/NebulaWall";
 import IdentaGate from "@/pages/products/IdentaGate";
 import PulseIQ from "@/pages/products/PulseIQ";
 import FlowOps from "@/pages/products/FlowOps";
+import UnifySec from "@/pages/products/UnifySec";
 import CybersecurityRiskAssessment from "@/pages/services/CybersecurityRiskAssessment";
 import ManagedDetectionResponse from "@/pages/services/ManagedDetectionResponse";
 import ZeroTrustArchitectureDesign from "@/pages/services/ZeroTrustArchitectureDesign";
@@ -43,6 +44,7 @@ function Router() {
       <Route path="/products/identagate" component={IdentaGate} />
       <Route path="/products/pulseiq" component={PulseIQ} />
       <Route path="/products/flowops" component={FlowOps} />
+      <Route path="/products/unifysec" component={UnifySec} />
       <Route path="/solutions" component={Solutions} />
       <Route path="/solutions/zero-trust-implementation" component={ZeroTrustImplementation} />
       <Route path="/solutions/cloud-security-&-compliance" component={CloudSecurityCompliance} />
