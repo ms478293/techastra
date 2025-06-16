@@ -24,6 +24,7 @@ import PulseIQ from "@/pages/products/PulseIQ";
 import FlowOps from "@/pages/products/FlowOps";
 import UnifySec from "@/pages/products/UnifySec";
 import TecAstraLab from "@/pages/TecAstraLab";
+import Company from "@/pages/Company";
 import CybersecurityRiskAssessment from "@/pages/services/CybersecurityRiskAssessment";
 import ManagedDetectionResponse from "@/pages/services/ManagedDetectionResponse";
 import ZeroTrustArchitectureDesign from "@/pages/services/ZeroTrustArchitectureDesign";
@@ -47,6 +48,7 @@ function Router() {
       <Route path="/products/flowops" component={FlowOps} />
       <Route path="/products/unifysec" component={UnifySec} />
       <Route path="/lab" component={TecAstraLab} />
+      <Route path="/company" component={Company} />
       <Route path="/solutions" component={Solutions} />
       <Route path="/solutions/zero-trust-implementation" component={ZeroTrustImplementation} />
       <Route path="/solutions/cloud-security-&-compliance" component={CloudSecurityCompliance} />

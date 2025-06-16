@@ -34,7 +34,7 @@ const Products = () => {
           name: "ClearDNS",
           subtitle: "DNS Security",
           description: "AI-powered DNS security with advanced threat scoring and phishing-aware filtering to protect against malicious domains.",
-          image: images.dataCenter[0],
+          image: images.networkSecurity[2],
           differentiators: [
             "AI threat scoring engine",
             "Phishing-aware DNS filtering", 
