@@ -96,6 +96,7 @@ const Header = () => {
                 </div>
                 
                 <Link href="/resources" className="text-[hsl(var(--tecastra-darkblue))] hover:text-[hsl(var(--tecastra-teal))] font-medium">Resources</Link>
+                <Link href="/lab" className="text-[hsl(var(--tecastra-darkblue))] hover:text-[hsl(var(--tecastra-teal))] font-medium">TecAstra Lab</Link>
                 <Link href="#" className="text-[hsl(var(--tecastra-darkblue))] hover:text-[hsl(var(--tecastra-teal))] font-medium">Partners</Link>
               </nav>
             )}

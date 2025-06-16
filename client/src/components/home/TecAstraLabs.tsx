@@ -96,8 +96,8 @@ const TecAstraLabs = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link href="#" className="inline-flex items-center px-6 py-3 bg-[hsl(var(--tecastra-gold))] text-[hsl(var(--tecastra-darkblue))] font-medium rounded-full hover:bg-white transition duration-150">
-                  Visit TecAstra Labs <ArrowRight className="ml-2 h-4 w-4" />
+                <Link href="/lab" className="inline-flex items-center px-6 py-3 bg-[hsl(var(--tecastra-gold))] text-[hsl(var(--tecastra-darkblue))] font-medium rounded-full hover:bg-white transition duration-150">
+                  Try FortIQ Demo <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </motion.div>
             </motion.div>
