@@ -13,6 +13,10 @@ import FortIQ from "@/pages/products/FortIQ";
 import ClearDNS from "@/pages/products/ClearDNS";
 import TrustLynk from "@/pages/products/TrustLynk";
 import SentraCore from "@/pages/products/SentraCore";
+import ZeroTrustImplementation from "@/pages/solutions/ZeroTrustImplementation";
+import CloudSecurityCompliance from "@/pages/solutions/CloudSecurityCompliance";
+import RansomwarePrevention from "@/pages/solutions/RansomwarePrevention";
+import RemoteWorkforceSecurity from "@/pages/solutions/RemoteWorkforceSecurity";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Chatbot from "@/components/layout/Chatbot";
@@ -27,6 +31,10 @@ function Router() {
       <Route path="/products/trustlynk" component={TrustLynk} />
       <Route path="/products/sentracore" component={SentraCore} />
       <Route path="/solutions" component={Solutions} />
+      <Route path="/solutions/zero-trust-implementation" component={ZeroTrustImplementation} />
+      <Route path="/solutions/cloud-security-&-compliance" component={CloudSecurityCompliance} />
+      <Route path="/solutions/ransomware-prevention" component={RansomwarePrevention} />
+      <Route path="/solutions/remote-workforce-security" component={RemoteWorkforceSecurity} />
       <Route path="/services" component={Services} />
       <Route path="/resources" component={Resources} />
       <Route component={NotFound} />
