@@ -32,6 +32,71 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
   
+  // Z.ai chatbot integration endpoint
+  app.post('/api/chat/zai', async (req, res) => {
+    try {
+      const { message } = req.body;
+      
+      if (!message) {
+        return res.status(400).json({ error: 'Message is required' });
+      }
+
+      try {
+        // Call actual Z.ai API using correct format from documentation
+        const zaiResponse = await axios.post('https://open.bigmodel.cn/api/paas/v4/chat/completions', {
+          model: 'glm-4-flash',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are TecAstra\'s AI cybersecurity assistant. Provide helpful, professional advice about cybersecurity solutions, threat prevention, and TecAstra products (FortIQ, ClearDNS, TrustLynk, SentraCore, MailShield 360, NebulaWall, IdentaGate, PulseIQ, FlowOps, UnifySec). Keep responses concise and actionable.'
+            },
+            {
+              role: 'user',
+              content: message
+            }
+          ],
+          temperature: 0.95,
+          max_tokens: 1024,
+          stream: false
+        }, {
+          headers: {
+            'Authorization': 'Bearer ' + process.env.ZAI_API_KEY,
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        const aiResponse = zaiResponse.data.choices[0].message.content;
+        
+        return res.json({ 
+          response: aiResponse,
+          timestamp: new Date().toISOString()
+        });
+      } catch (apiError) {
+        console.error('Z.ai API error:', apiError);
+        
+        // Fallback to simulated responses if API fails
+        const cybersecurityResponses = [
+          "Based on current threat intelligence, I recommend implementing multi-factor authentication and regular security audits.",
+          "TecAstra's FortIQ Next-Gen Firewall can help protect against advanced persistent threats. Would you like to learn more?",
+          "For ransomware protection, consider our comprehensive endpoint detection and response solution, SentraCore.",
+          "Zero Trust architecture is essential for modern cybersecurity. Our TrustLynk platform can help you implement this approach.",
+          "Cloud security compliance is critical. Our NebulaWall platform provides developer-first cloud protection.",
+          "Email security threats are evolving. MailShield 360 offers advanced protection against phishing and brand spoofing."
+        ];
+        
+        const randomResponse = cybersecurityResponses[Math.floor(Math.random() * cybersecurityResponses.length)];
+        
+        return res.json({ 
+          response: randomResponse + " (Note: AI assistant is currently in fallback mode)",
+          timestamp: new Date().toISOString()
+        });
+      }
+    } catch (error) {
+      console.error('Z.ai integration error:', error);
+      return res.status(500).json({ error: 'Failed to process chat request' });
+    }
+  });
+
   // Demo request endpoint
   app.post('/api/demo-request', async (req, res) => {
     try {

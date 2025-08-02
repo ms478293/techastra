@@ -19,7 +19,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: 'bot',
-      text: 'Hello! How can I help you with TecAstra\'s cybersecurity solutions today?',
+      text: 'Hello! I\'m TecAstra\'s AI assistant. How can I help you with cybersecurity solutions today?',
       timestamp: new Date()
     }
   ]);
@@ -29,7 +29,7 @@ const Chatbot = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!newMessage.trim()) return;
@@ -41,19 +41,44 @@ const Chatbot = () => {
       timestamp: new Date()
     };
     
-    setMessages([...messages, userMessage]);
+    setMessages(prev => [...prev, userMessage]);
+    const currentMessage = newMessage;
     setNewMessage('');
     
-    // Simulate bot response after a short delay
-    setTimeout(() => {
+    try {
+      // Call Z.ai backend endpoint
+      const response = await fetch('/api/chat/zai', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: currentMessage }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to get response from chatbot');
+      }
+      
+      const data = await response.json();
+      
       const botMessage: Message = {
         sender: 'bot',
-        text: 'Thank you for your message. One of our security experts will get back to you shortly. Is there anything else I can help you with?',
+        text: data.response,
         timestamp: new Date()
       };
       
       setMessages(prev => [...prev, botMessage]);
-    }, 1000);
+    } catch (error) {
+      console.error('Error sending message to chatbot:', error);
+      
+      const errorMessage: Message = {
+        sender: 'bot',
+        text: 'I apologize, but I\'m experiencing technical difficulties. Please try again later or contact our support team directly.',
+        timestamp: new Date()
+      };
+      
+      setMessages(prev => [...prev, errorMessage]);
+    }
   };
 
   return (
