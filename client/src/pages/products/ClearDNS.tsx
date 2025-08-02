@@ -156,8 +156,11 @@ const ClearDNS = () => {
                 to protect against malicious domains and data exfiltration attempts.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/demo" className="px-8 py-3 bg-[hsl(var(--tecastra-gold))] text-[hsl(var(--tecastra-darkblue))] rounded-full font-medium hover:bg-[hsl(var(--tecastra-gold))]/90 transition duration-150">
-                  Request Demo
+                <Link href="/cleardns-platform" className="px-8 py-3 bg-[hsl(var(--tecastra-gold))] text-[hsl(var(--tecastra-darkblue))] rounded-full font-medium hover:bg-[hsl(var(--tecastra-gold))]/90 transition duration-150">
+                  Launch Platform
+                </Link>
+                <Link href="/demo" className="px-8 py-3 border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-[hsl(var(--tecastra-darkblue))] transition duration-150">
+                  Get Demo
                 </Link>
                 <Link href="/contact" className="px-8 py-3 border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-[hsl(var(--tecastra-darkblue))] transition duration-150">
                   Contact Sales
@@ -391,6 +394,9 @@ const ClearDNS = () => {
               Protect your organization from advanced threats while maintaining optimal network performance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/cleardns-platform" className="px-8 py-3 bg-[hsl(var(--tecastra-gold))] text-[hsl(var(--tecastra-darkblue))] rounded-full font-medium hover:bg-[hsl(var(--tecastra-gold))]/90 transition duration-150">
+                Try ClearDNS Now
+              </Link>
               <Link href="/demo" className="px-8 py-3 bg-[hsl(var(--tecastra-teal))] text-white rounded-full font-medium hover:bg-[hsl(var(--tecastra-gold))] hover:text-[hsl(var(--tecastra-darkblue))] transition duration-150">
                 Schedule Demo
               </Link>

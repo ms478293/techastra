@@ -13,11 +13,35 @@ import { Label } from '@/components/ui/label';
 const TecAstraLab = () => {
   const [activeView, setActiveView] = useState('dashboard');
   const [realTimeStats, setRealTimeStats] = useState({
-    totalTraffic: 245678,
-    blockedThreats: 1247,
-    activeConnections: 892,
-    policyViolations: 23
+    totalTraffic: 0,
+    blockedThreats: 0,
+    activeConnections: 0,
+    policyViolations: 0
   });
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const response = await fetch('/api/cleardns/stats');
+        if (response.ok) {
+          const data = await response.json();
+          const stats = data.stats;
+          setRealTimeStats({
+            totalTraffic: stats.totalQueries || 0,
+            blockedThreats: stats.threatsBlocked || 0,
+            activeConnections: 0, // Could be enhanced with real data
+            policyViolations: 0 // Could be enhanced with real data
+          });
+        }
+      } catch (error) {
+        console.error('Failed to fetch real-time stats:', error);
+      }
+    }
+
+    fetchStats();
+    const interval = setInterval(fetchStats, 5000); // Refresh every 5 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   // Interactive firewall controls
   const [firewallEnabled, setFirewallEnabled] = useState(true);
@@ -36,12 +60,7 @@ const TecAstraLab = () => {
   });
   
   // Live traffic simulation
-  const [trafficLog, setTrafficLog] = useState([
-    { time: new Date().toLocaleTimeString(), source: '192.168.1.100', destination: '8.8.8.8', port: '443', action: 'ALLOWED', protocol: 'HTTPS' },
-    { time: new Date().toLocaleTimeString(), source: '192.168.1.101', destination: '1.1.1.1', port: '53', action: 'ALLOWED', protocol: 'DNS' },
-    { time: new Date().toLocaleTimeString(), source: '192.168.1.102', destination: 'malicious-site.com', port: '80', action: 'BLOCKED', protocol: 'HTTP' },
-    { time: new Date().toLocaleTimeString(), source: '192.168.1.103', destination: '10.0.0.50', port: '22', action: 'ALLOWED', protocol: 'SSH' }
-  ]);
+  const [trafficLog, setTrafficLog] = useState([]);
   
   // Application controls
   const [applicationControls, setApplicationControls] = useState({
@@ -210,22 +229,33 @@ const TecAstraLab = () => {
     setTrafficLog([]);
   };
 
-  // Simulate real-time data updates and traffic generation
+  // Fetch real-time stats and traffic log from backend
   useEffect(() => {
-    const interval = setInterval(() => {
-      // Update stats
-      setRealTimeStats(prev => ({
-        totalTraffic: prev.totalTraffic + Math.floor(Math.random() * 100),
-        blockedThreats: firewallEnabled ? prev.blockedThreats + Math.floor(Math.random() * 2) : prev.blockedThreats,
-        activeConnections: prev.activeConnections + Math.floor(Math.random() * 20) - 10,
-        policyViolations: prev.policyViolations + Math.floor(Math.random() * 1)
-      }));
-      
-      // Generate new traffic entry
-      const newEntry = generateTrafficEntry();
-      setTrafficLog(prev => [newEntry, ...prev.slice(0, 19)]);
-    }, 3000);
+    const fetchStatsAndTraffic = async () => {
+      try {
+        const statsResponse = await fetch('/api/cleardns/stats');
+        if (statsResponse.ok) {
+          const statsData = await statsResponse.json();
+          setRealTimeStats({
+            totalTraffic: statsData.totalQueries || 0,
+            blockedThreats: statsData.threatsBlocked || 0,
+            activeConnections: statsData.activeThreats || 0,
+            policyViolations: 0
+          });
+        }
 
+        const trafficResponse = await fetch('/api/cleardns/threats');
+        if (trafficResponse.ok) {
+          const trafficData = await trafficResponse.json();
+          setTrafficLog(trafficData.slice(0, 20));
+        }
+      } catch (error) {
+        console.error('Error fetching stats or traffic:', error);
+      }
+    };
+
+    fetchStatsAndTraffic();
+    const interval = setInterval(fetchStatsAndTraffic, 5000);
     return () => clearInterval(interval);
   }, [firewallEnabled, threatDetectionEnabled]);
 

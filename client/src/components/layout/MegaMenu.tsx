@@ -22,7 +22,7 @@ interface MegaMenuProps {
 const MegaMenu = ({ type }: MegaMenuProps) => {
   if (type === 'products') {
     return (
-      <div className="mega-menu absolute left-0 w-screen max-w-5xl bg-white shadow-xl rounded-b-lg p-8 mt-2 grid grid-cols-4 gap-x-6 gap-y-4 border-t-2 border-[hsl(var(--tecastra-teal))] z-50">
+      <div className="mega-menu absolute left-0 w-screen max-w-5xl bg-white shadow-xl rounded-b-lg p-8 mt-0 grid grid-cols-4 gap-x-6 gap-y-4 border-t-2 border-[hsl(var(--tecastra-teal))] z-50">
         <div>
           <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">Network Security</h3>
           <ul className="space-y-2">
@@ -116,7 +116,7 @@ const MegaMenu = ({ type }: MegaMenuProps) => {
   
   if (type === 'solutions') {
     return (
-      <div className="mega-menu absolute left-0 w-screen max-w-4xl bg-white shadow-xl rounded-b-lg p-8 mt-2 grid grid-cols-2 gap-x-8 gap-y-4 border-t-2 border-[hsl(var(--tecastra-teal))] z-50">
+      <div className="mega-menu absolute left-0 w-screen max-w-4xl bg-white shadow-xl rounded-b-lg p-8 mt-0 grid grid-cols-2 gap-x-8 gap-y-4 border-t-2 border-[hsl(var(--tecastra-teal))] z-50">
         <div>
           <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">By Use Case</h3>
           <ul className="space-y-2">
@@ -150,7 +150,7 @@ const MegaMenu = ({ type }: MegaMenuProps) => {
   
   // Services mega menu
   return (
-    <div className="mega-menu absolute left-0 w-screen max-w-2xl bg-white shadow-xl rounded-b-lg p-8 mt-2 grid grid-cols-1 gap-y-4 border-t-2 border-[hsl(var(--tecastra-teal))] z-50">
+    <div className="mega-menu absolute left-0 w-screen max-w-2xl bg-white shadow-xl rounded-b-lg p-8 mt-0 grid grid-cols-1 gap-y-4 border-t-2 border-[hsl(var(--tecastra-teal))] z-50">
       <div>
         <h3 className="font-heading font-semibold text-[hsl(var(--tecastra-teal))] mb-4">Professional Services</h3>
         <ul className="space-y-2">

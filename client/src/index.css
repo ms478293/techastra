@@ -73,8 +73,9 @@
 .mega-menu {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.2s ease-out;
+  transform: translateY(-5px);
+  transition: opacity 0.15s ease-out, visibility 0.15s ease-out, transform 0.15s ease-out;
+  transition-delay: 0s, 0s, 0s;
   pointer-events: none;
 }
 
@@ -84,6 +85,7 @@
   visibility: visible;
   transform: translateY(0);
   pointer-events: all;
+  transition-delay: 0.1s, 0s, 0s;
 }
 
 .nav-item {
@@ -92,6 +94,18 @@
 
 .nav-item:hover .mega-menu {
   display: block;
+}
+
+/* Add invisible bridge to prevent menu from disappearing */
+.nav-item::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: transparent;
+  z-index: 49;
 }
 
 .skeleton {

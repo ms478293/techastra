@@ -11,6 +11,7 @@ import Services from "@/pages/Services";
 import Resources from "@/pages/Resources";
 import FortIQ from "@/pages/products/FortIQ";
 import ClearDNS from "@/pages/products/ClearDNS";
+import ClearDNSProduct from "@/pages/ClearDNSProduct";
 import TrustLynk from "@/pages/products/TrustLynk";
 import SentraCore from "@/pages/products/SentraCore";
 import ZeroTrustImplementation from "@/pages/solutions/ZeroTrustImplementation";
@@ -39,6 +40,7 @@ function Router() {
       <Route path="/products" component={Products} />
       <Route path="/products/fortiq" component={FortIQ} />
       <Route path="/products/cleardns" component={ClearDNS} />
+      <Route path="/cleardns-platform" component={ClearDNSProduct} />
       <Route path="/products/trustlynk" component={TrustLynk} />
       <Route path="/products/sentracore" component={SentraCore} />
       <Route path="/products/mailshield-360" component={MailShield360} />
