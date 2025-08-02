@@ -96,10 +96,8 @@ const WhyTecAstra = () => {
               className="mt-10"
               variants={itemVariants}
             >
-              <Link href="#">
-                <a className="inline-flex items-center text-[hsl(var(--tecastra-teal))] font-medium hover:text-[hsl(var(--tecastra-gold))] transition duration-150">
-                  Learn more about our approach <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
+              <Link href="#" className="inline-flex items-center text-[hsl(var(--tecastra-teal))] font-medium hover:text-[hsl(var(--tecastra-gold))] transition duration-150">
+                Learn more about our approach <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </motion.div>
           </motion.div>
