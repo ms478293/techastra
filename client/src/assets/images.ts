@@ -1,7 +1,7 @@
 // This file contains URLs for all stock images used in the application
 
 // Import the new TecAstra logo
-import tecAstraLogo from './images/tecastra-logo-new.png';
+import tecAstraLogo from './images/tecastra-logo-new.jpeg';
 
 export const images = {
   // TecAstra branding

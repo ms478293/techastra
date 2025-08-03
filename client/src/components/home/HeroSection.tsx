@@ -68,7 +68,22 @@ const HeroSection = () => {
               src={images.cybersecurityProfessionals[0]} 
               alt="Cybersecurity professionals at work in a security operations center" 
               className="rounded-xl shadow-2xl w-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                target.nextElementSibling?.classList.remove('hidden');
+              }}
             />
+            <div className="hidden rounded-xl shadow-2xl w-full h-64 bg-gradient-to-br from-blue-900 to-teal-600 flex items-center justify-center">
+              <div className="text-white text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <p className="text-lg font-semibold">Cybersecurity Excellence</p>
+              </div>
+            </div>
             <motion.div 
               className="absolute -bottom-4 -right-4 bg-[hsl(var(--tecastra-teal))] text-white p-4 rounded-lg shadow-lg"
               initial={{ opacity: 0, y: 20 }}
