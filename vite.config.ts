@@ -30,38 +30,14 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          // Vendor chunks
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor';
-            }
-            if (id.includes('wouter')) {
-              return 'router';
-            }
-            if (id.includes('@radix-ui')) {
-              return 'ui';
-            }
-            if (id.includes('framer-motion')) {
-              return 'animations';
-            }
-            if (id.includes('@tanstack')) {
-              return 'query';
-            }
-            // Other node_modules
-            return 'vendor';
-          }
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['wouter'],
         },
       },
     },
     chunkSizeWarningLimit: 500,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    minify: false,
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'wouter'],

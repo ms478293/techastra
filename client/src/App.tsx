@@ -18,7 +18,21 @@ const Solutions = lazy(() => import("@/pages/Solutions"));
 const Services = lazy(() => import("@/pages/Services"));
 const Resources = lazy(() => import("@/pages/Resources"));
 const FortIQ = lazy(() => import("@/pages/products/FortIQ"));
-import ClearDNS from "@/pages/products/ClearDNS";
+// Create a simple test component inline to ensure it's included
+const TestClearDNS = () => {
+  console.log("TestClearDNS component rendered");
+  return (
+    <div style={{ padding: '20px', backgroundColor: 'red', color: 'white' }}>
+      <h1>TEST: ClearDNS Component</h1>
+      <p>This is a test component to ensure routing works.</p>
+    </div>
+  );
+};
+
+// Force the component to be used by exporting it
+window.TestClearDNS = TestClearDNS;
+
+console.log("TestClearDNS component created:", TestClearDNS);
 const ClearDNSProduct = lazy(() => import("@/pages/ClearDNSProduct"));
 const TrustLynk = lazy(() => import("@/pages/products/TrustLynk"));
 const SentraCore = lazy(() => import("@/pages/products/SentraCore"));
@@ -44,7 +58,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/products" component={Products} />
       <Route path="/products/fortiq" component={FortIQ} />
-      <Route path="/products/cleardns" component={ClearDNS} />
+      <Route path="/products/cleardns" component={TestClearDNS} />
       <Route path="/cleardns-platform" component={ClearDNSProduct} />
       <Route path="/products/trustlynk" component={TrustLynk} />
       <Route path="/products/sentracore" component={SentraCore} />

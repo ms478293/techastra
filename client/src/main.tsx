@@ -2,6 +2,10 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
+// Force include ClearDNS component in main bundle
+import ClearDNS from "./pages/products/ClearDNS";
+console.log("ClearDNS imported in main:", ClearDNS);
+
 // Add loading state
 const rootElement = document.getElementById("root");
 if (!rootElement) {
