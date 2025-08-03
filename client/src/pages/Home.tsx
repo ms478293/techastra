@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import FallbackComponent from '@/components/FallbackComponent';
 import HeroSection from '@/components/home/HeroSection';
@@ -11,22 +10,7 @@ import Resources from '@/components/home/Resources';
 
 const Home = () => {
   return (
-    <>
-      <Helmet>
-        <title>TecAstra - Cybersecurity Solutions for Modern Enterprises</title>
-        <meta name="description" content="TecAstra delivers comprehensive cybersecurity solutions that protect your organization from advanced threats across cloud, network, and endpoints." />
-        
-        {/* Open Graph tags */}
-        <meta property="og:title" content="TecAstra - Cybersecurity Solutions for Modern Enterprises" />
-        <meta property="og:description" content="Comprehensive cybersecurity solutions to protect your organization from advanced threats." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://tecastra.com" />
-        
-        {/* Load required fonts */}
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
-      </Helmet>
-      
-      <div>
+    <div>
         <ErrorBoundary fallback={({ error }) => <FallbackComponent error={error} componentName="Hero Section" />}>
           <HeroSection />
         </ErrorBoundary>
@@ -49,7 +33,6 @@ const Home = () => {
           <Resources />
         </ErrorBoundary>
       </div>
-    </>
   );
 };
 
