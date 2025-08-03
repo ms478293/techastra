@@ -106,6 +106,43 @@ if (window.location.pathname === '/products/cleardns') {
   }
 }
 
+// Force the code to be used by exporting it
+window.debugClearDNS = () => {
+  console.log("Debug function called");
+  if (window.location.pathname === '/products/cleardns') {
+    const root = document.getElementById('root');
+    if (root) {
+      root.innerHTML = `
+        <div style="
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: red;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 48px;
+          font-weight: bold;
+          z-index: 9999
+        ">
+          🎯 CLEARDNS PAGE IS WORKING! 🎯
+        </div>
+      `;
+    }
+  }
+};
+
+// Also call it immediately
+window.debugClearDNS();
+
+// Also add a simple test to force the code to be used
+const testDiv = document.createElement('div');
+testDiv.innerHTML = 'TEST';
+document.body.appendChild(testDiv);
+
 
 
 // Add loading state

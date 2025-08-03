@@ -30,14 +30,12 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          router: ['wouter'],
-        },
+        manualChunks: undefined,
       },
     },
     chunkSizeWarningLimit: 500,
     minify: false,
+    sourcemap: true,
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'wouter'],
