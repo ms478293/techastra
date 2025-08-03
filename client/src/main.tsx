@@ -2,9 +2,111 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-// Force include ClearDNS component in main bundle
-import ClearDNS from "./pages/products/ClearDNS";
-console.log("ClearDNS imported in main:", ClearDNS);
+// Create a test component directly in main bundle
+const TestClearDNS = () => {
+  console.log("TestClearDNS component rendered");
+  return (
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: 'red',
+      color: 'white',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: '48px',
+      fontWeight: 'bold',
+      zIndex: 9999
+    }}>
+      🎯 CLEARDNS PAGE IS WORKING! 🎯
+    </div>
+  );
+};
+
+// Export it globally and force it to be used
+window.TestClearDNS = TestClearDNS;
+console.log("TestClearDNS component created and exported");
+
+// Force the component to be used by calling it
+const testElement = TestClearDNS();
+console.log("TestClearDNS element created:", testElement);
+
+// Also add it to the DOM immediately
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOMContentLoaded fired");
+  console.log("Current pathname:", window.location.pathname);
+  
+  if (window.location.pathname === '/products/cleardns') {
+    console.log("ClearDNS path detected, injecting content");
+    const root = document.getElementById('root');
+    if (root) {
+      console.log("Root element found, injecting content");
+      root.innerHTML = `
+        <div style="
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: red;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 48px;
+          font-weight: bold;
+          z-index: 9999
+        ">
+          🎯 CLEARDNS PAGE IS WORKING! 🎯
+        </div>
+      `;
+      console.log("Content injected successfully");
+    } else {
+      console.log("Root element not found");
+    }
+  } else {
+    console.log("Not ClearDNS path, continuing with normal app");
+  }
+});
+
+// Also try immediate execution
+console.log("Main script loaded");
+console.log("Current pathname:", window.location.pathname);
+
+if (window.location.pathname === '/products/cleardns') {
+  console.log("ClearDNS path detected in immediate execution");
+  const root = document.getElementById('root');
+  if (root) {
+    console.log("Root element found in immediate execution");
+    root.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: red;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        font-weight: bold;
+        z-index: 9999
+      ">
+        🎯 CLEARDNS PAGE IS WORKING! 🎯
+      </div>
+    `;
+    console.log("Content injected successfully in immediate execution");
+  } else {
+    console.log("Root element not found in immediate execution");
+  }
+}
+
+
 
 // Add loading state
 const rootElement = document.getElementById("root");
@@ -48,7 +150,13 @@ rootElement.innerHTML = `
 // Render the app
 try {
   const root = createRoot(rootElement);
-  root.render(<App />);
+  
+  // Test if we can render the test component directly
+  if (window.location.pathname === '/products/cleardns') {
+    root.render(<TestClearDNS />);
+  } else {
+    root.render(<App />);
+  }
 } catch (error) {
   console.error("Failed to render app:", error);
   rootElement.innerHTML = `
