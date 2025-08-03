@@ -18,7 +18,7 @@ const Solutions = lazy(() => import("@/pages/Solutions"));
 const Services = lazy(() => import("@/pages/Services"));
 const Resources = lazy(() => import("@/pages/Resources"));
 const FortIQ = lazy(() => import("@/pages/products/FortIQ"));
-const ClearDNS = lazy(() => import("@/pages/products/ClearDNS"));
+import ClearDNS from "@/pages/products/ClearDNS";
 const ClearDNSProduct = lazy(() => import("@/pages/ClearDNSProduct"));
 const TrustLynk = lazy(() => import("@/pages/products/TrustLynk"));
 const SentraCore = lazy(() => import("@/pages/products/SentraCore"));
